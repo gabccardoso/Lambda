@@ -17,6 +17,11 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: '17'
+          distribution: 'adopt'
+          server-id: github
+          server-username: GITHUB_ACTOR
+          server-password: ${{ secrets.GITHUB_TOKEN }}
+          overwrite-settings: true
 
       - name: Build with Maven
         run: mvn -B clean package
