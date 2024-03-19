@@ -33,4 +33,4 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
           function_name: auth
-          zip_file: /target/Lambda-1.0-SNAPSHOT.jar
+          zip_file: fileb://target/Lambda-1.0-SNAPSHOT.jar
