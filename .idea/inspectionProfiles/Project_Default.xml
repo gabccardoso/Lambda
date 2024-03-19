@@ -1,0 +1,32 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="VulnerableLibrariesLocal" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="isIgnoringEnabled" value="true" />
+      <option name="ignoredModules">
+        <list>
+          <option value="Lambda" />
+          <option value="Lambda" />
+          <option value="Lambda" />
+          <option value="Lambda" />
+        </list>
+      </option>
+      <option name="ignoredPackages">
+        <list>
+          <option value="com.amazonaws:aws-java-sdk-s3:1.12.186" />
+          <option value="com.google.code.gson:gson:2.8.8" />
+          <option value="software.amazon.ion:ion-java:1.0.2" />
+          <option value="org.json:json:20160212" />
+        </list>
+      </option>
+      <option name="ignoredReasons">
+        <list>
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
