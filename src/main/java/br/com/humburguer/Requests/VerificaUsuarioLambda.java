@@ -62,8 +62,8 @@ public class VerificaUsuarioLambda {
     }
 
     private void sendEmail(String recipientEmail, String emailContent) throws UnirestException {
-        String DOMAIN = "sandboxd05e4829cf85493da9cb6601570e3805.mailgun.org";
-        String API_KEY = "09d285950d198ecc3d458ff78fdee365-b02bcf9f-0eb04575";
+        String DOMAIN = System.getenv("DOMAIN");
+        String API_KEY = System.getenv("API_KEY");
         HttpResponse<JsonNode> request = Unirest.post("https://api.mailgun.net/v3/" + DOMAIN + "/messages")
                 .basicAuth("Authorization", API_KEY)
                 .queryString("from", "Hummburguer <USER@YOURDOMAIN.COM>")
