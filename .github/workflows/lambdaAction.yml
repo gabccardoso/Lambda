@@ -24,7 +24,7 @@ jobs:
           overwrite-settings: true
 
       - name: Build with Maven
-        run: mvn -B clean package
+        run: mvn clean package
 
       - name: Deploy to Lambda
         uses: appleboy/lambda-action@master
@@ -33,4 +33,4 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
           function_name: auth
-          zip_file: /home/runner/work/Lambda/Lambda/target/Lambda-1.0-SNAPSHOT-shaded.jar
+          zip_file: /home/runner/work/Lambda/Lambda/target/Lambda-1.0-SNAPSHOT.jar
