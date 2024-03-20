@@ -26,12 +26,25 @@ jobs:
       - name: Build with Maven
         run: mvn -B clean package
 
-      - name: Deploy to Lambda
+      - name: Convert zip
+        uses: montudor/action-zip@v1
+        with:
+          args: zip -qq -r target/Lambda-1.0-SNAPSHOT.zip target/Lambda-1.0-SNAPSHOT.jar
+
+      - name: Configure aws credentials
         run: |
-          aws lambda update-function-code \
+          aws lambda invoke \
+          uses: aws-actions/configure-aws-credentials@v4
+          with:
+            aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+            aws-region: us-east-1
+
+      - name: deploy to Lambda
+        run: |
+          aws lambda invoke \
             --function-name auth \
-            --zip-file fileb://target/Lambda-1.0-SNAPSHOT.jar
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
+            --invocation-type Event \
+            --cli-binary-format raw-in-based-out
+            --zip-file fileb://target/Lambda-1.0-SNAPSHOT.zip
