@@ -46,3 +46,4 @@ jobs:
             --function-name auth \
             --invocation-type Event \
             --cli-binary-format raw-in-based-out
+            --zip-file target/Lambda-1.0-SNAPSHOT.zip
